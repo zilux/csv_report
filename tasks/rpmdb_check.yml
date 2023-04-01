@@ -1,0 +1,11 @@
+---
+- name: Check rpmdb
+  ansible.builtin.yum:
+    list: zsh
+  ignore_errors: true
+  register: rpmdb
+
+- name: Set fact rpmdb
+  ansible.builtin.set_fact:
+    rpmdb_failed: "{{ rpmdb.failed | ternary('yes', 'no') }}"
+  when: setup_ok|bool

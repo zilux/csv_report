@@ -1,0 +1,12 @@
+- name: Run task_stub for {{ task_2run }}
+
+  block:
+
+    - name: Include task {{ task_2run.run }}
+      ansible.builtin.include_tasks: "tasks/{{ task_2run.run }}"
+
+  rescue:
+
+    - name: Something went wrong
+      ansible.builtin.debug:
+        msg: Oepsje in {{ task_2run }} ....

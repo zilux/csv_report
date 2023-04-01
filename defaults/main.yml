@@ -1,0 +1,11 @@
+---
+# defaults file for looping
+#
+delegate_host: mail.example.com
+email_to:
+  - someone@gmail.com
+
+async_delay: 60
+poll_count: 5
+
+must_mail: true

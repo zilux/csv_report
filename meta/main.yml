@@ -1,0 +1,18 @@
+galaxy_info:
+
+  author: Harry Zijlmans
+  description: check several objects
+  company: zilux
+
+  license: license GPL-2.0-or-later
+
+  min_ansible_version: '2.9'
+
+  platforms:
+    - name: EL
+      versions:
+        - '7'
+
+  galaxy_tags: []
+
+dependencies: []

@@ -1,0 +1,14 @@
+---
+- name: Set reachable to false
+  ansible.builtin.set_fact:
+    setup_ok: nologin
+
+- name: Minimal setup
+  ansible.builtin.setup:
+    # gather_timeout: 60
+  async: "{{ async_delay }}"
+  poll: "{{ poll_count }}"
+
+- name: Set reachable to true
+  ansible.builtin.set_fact:
+    setup_ok: true

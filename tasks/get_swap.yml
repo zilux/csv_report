@@ -1,0 +1,25 @@
+---
+- name: Check Swap-space
+
+  block:
+
+    - name: Check meminfo
+      ansible.builtin.shell:
+        cmd: set -o pipefail && cat /proc/meminfo | grep -e MemAvailable -e SwapTotal -e SwapFree
+      register: status_swap
+      changed_when: false
+
+    - name: Mem available
+      ansible.builtin.set_fact:
+        mem_available: "{{ status_swap.stdout_lines[0].split(':')[-1] | regex_search('[0-9]+') }}"
+      changed_when: false
+
+    - name: Swap total
+      ansible.builtin.set_fact:
+        swap_total: "{{ status_swap.stdout_lines[1].split(':')[-1] | regex_search('[0-9]+') }}"
+      changed_when: false
+
+    - name: Swap free
+      ansible.builtin.set_fact:
+        swap_free: "{{ status_swap.stdout_lines[2].split(':')[-1] | regex_search('[0-9]+') }}"
+      changed_when: false

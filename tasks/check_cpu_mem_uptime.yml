@@ -1,0 +1,17 @@
+---
+- name: Gather mem cpu uptime
+
+  when: setup_ok|bool
+  block:
+
+    - name: Uptime
+      ansible.builtin.set_fact:
+        uptime: "{{ (ansible_uptime_seconds / 86400) | round(0) | int }}"
+
+    - name: Determine vcpus
+      ansible.builtin.set_fact:
+        procs: "{{ ansible_processor_vcpus }}"
+
+    - name: Determine mem
+      ansible.builtin.set_fact:
+        memtot: "{{ ansible_memtotal_mb }}"

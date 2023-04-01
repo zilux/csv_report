@@ -1,0 +1,25 @@
+---
+- name: Check repo
+  block:
+    - name: Set fact initial status
+      ansible.builtin.set_fact:
+        status_repo: "not ok"
+
+    - name: Yum repolist outcome
+      ansible.builtin.command:
+        cmd: yum repolist
+      changed_when: false
+      register: repo_outcome
+      tags:
+        - skip_ansible_lint
+
+    - name: Set_fact status_repo
+      ansible.builtin.set_fact:
+        status_repo: "ok"
+      when: '"HTTPS Error 404" not in repo_outcome.stderr'
+
+  rescue:
+
+    - name: Set fact status_repo default
+      ansible.builtin.set_fact:
+        status_repo: '-'

@@ -1,0 +1,15 @@
+---
+
+- name: Check oom killer was active
+  ansible.builtin.shell:
+    cmd: /bin/dmesg -T | grep 'invoked oom-killer'
+  register: oom
+  changed_when: false
+  ignore_errors: true
+  failed_when: false
+  no_log: true
+
+- name: Set_fact oom_last_outcome
+  ansible.builtin.set_fact:
+    oom_last_outcome: "{{ oom.stdout_lines[-1].split(']')[0].split('[')[-1] }}"
+  when: oom.stdout_lines

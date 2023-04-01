@@ -1,0 +1,14 @@
+---
+# tasks file for looping
+
+- name: Include specific tasks
+  ansible.builtin.include_tasks: loop_stub.yml
+  vars:
+    task_2run: "{{ task_item }}"
+  loop: "{{ run_tasks }}"
+  loop_control:
+    loop_var: task_item
+    label: "{{ task_item['run'] }}"
+
+- name: Run create cvs
+  ansible.builtin.include_tasks: create_cvs.yml
