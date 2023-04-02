@@ -4,7 +4,8 @@ Role Name: csv_report
 [![CI](https://github.com/zilux/csv_report/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/zilux/csv_report/actions/workflows/ci.yml)
 
 
-Create csv file and mail this file
+Create csv file and mail this file.
+---
 
 You can create small tests and include this in your report.
 
