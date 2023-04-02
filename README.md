@@ -6,11 +6,17 @@ Create csv file and mail this file
 You can create small tests and include this in your report.
 
 For an item in your report you need e.g. in site.yml one row
- - { run: 'oom_check.yml', header: 'oom_last', outcome_in: ['oom_last_outcome'] }
+```
+ - role: csv_report
+   run_tasks:
+     - { run: 'oom_check.yml', header: 'oom_last', outcome_in: ['oom_last_outcome'] }
+```
 
+```
 run:  <test in tasks>
 header: <header line of report>
 outcome_in:  < var which is filled with outcome in <test in task>
+```
 
 Requirements
 ------------
@@ -33,7 +39,7 @@ Needed community.general
 Example Playbook
 ----------------
 
-
+```
   ---
   - name: Run check
     hosts: all
@@ -52,12 +58,12 @@ Example Playbook
           - { run: 'check_cpu_mem_uptime.yml', header: 'uptime,cpu,mem', outcome_in: ['uptime', 'procs', 'memtot'] }
           - { run: 'get_swap.yml', header: 'mem_available,swap_total,swap_free', outcome_in: ['mem_available', 'swap_total', 'swap_free'] }
           - { run: 'status_repos.yml', header: 'repos', outcome_in: ['status_repo'] }
-
+```
 
 License
 -------
 
-BSD
+license GPL-2.0-or-later
 
 Author Information
 ------------------
