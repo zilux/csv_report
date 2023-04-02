@@ -22,6 +22,7 @@ Requirements
 ------------
 
 You need a mail gateway which send your created csv file.
+You also can set param must_mail to false to see only output.
 
 Role Variables
 --------------
