@@ -1,0 +1,22 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    must_mail: false
+    run_tasks:
+      - { run: 'reachable.yml', header: 'reachable', outcome_in: ['setup_ok'] }
+      - { run: 'oom_check.yml', header: 'oom_last', outcome_in: ['oom_last_outcome'] }
+      - { run: 'rpmdb_check.yml', header: 'rpmdb_failed', outcome_in: ['rpmdb_failed'] }
+      - { run: 'check_cpu_mem_uptime.yml', header: 'uptime,cpu,mem', outcome_in: ['uptime', 'procs', 'memtot'] }
+      - { run: 'get_swap.yml', header: 'mem_available,swap_total,swap_free', outcome_in: ['mem_available', 'swap_total', 'swap_free'] }
+      - { run: 'status_repos.yml', header: 'repos', outcome_in: ['status_repo'] }
+
+  tasks:
+    # replace these tasks with whatever you find suitable to test
+    - name: Copy something to test use of synchronize module
+      ansible.builtin.copy:
+        src: /etc/hosts
+        dest: /tmp/hosts-from-controller
+    - name: "Include csv_report"
+      ansible.builtin.include_role:
+        name: "csv_report"

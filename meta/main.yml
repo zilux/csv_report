@@ -1,6 +1,6 @@
 galaxy_info:
-
   author: Harry Zijlmans
+  namespace: zilux
   description: check several objects
   company: zilux
 
