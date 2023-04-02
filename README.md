@@ -39,7 +39,7 @@ Needed community.general
 Example Playbook
 ----------------
 
-
+```
   ---
   - name: Run check
     hosts: all
@@ -58,7 +58,7 @@ Example Playbook
           - { run: 'check_cpu_mem_uptime.yml', header: 'uptime,cpu,mem', outcome_in: ['uptime', 'procs', 'memtot'] }
           - { run: 'get_swap.yml', header: 'mem_available,swap_total,swap_free', outcome_in: ['mem_available', 'swap_total', 'swap_free'] }
           - { run: 'status_repos.yml', header: 'repos', outcome_in: ['status_repo'] }
-
+```
 
 License
 -------
