@@ -63,7 +63,7 @@ Example Playbook
 License
 -------
 
-BSD
+license GPL-2.0-or-later
 
 Author Information
 ------------------
