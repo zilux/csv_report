@@ -15,7 +15,7 @@ galaxy_info:
         - '8'
         - '9'
 
-  galaxy_tags: []
+  galaxy_tags:
     - linux
     - EL
     - Fedora
