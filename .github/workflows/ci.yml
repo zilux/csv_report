@@ -28,6 +28,24 @@ jobs:
         run: |
           yamllint .
 
+  molecule:
+    name: Molecule
+    runs-on: self-hosted
+    
+    steps:
+      - name: Check out the codebase.
+        uses: actions/checkout@v2
+
+      - name: Install test dependencies.
+        run: pip3 install ansible molecule[docker] docker
+
+      - name: Run Molecule tests.
+        run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
+
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
