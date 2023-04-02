@@ -30,6 +30,7 @@ You also can set param must_mail to false to see only output.
 Role Variables
 --------------
 
+  must_mail: true
   delegate_host: mailhub.example.com
   email_to:
     - mail_account@gmail.com
@@ -54,7 +55,7 @@ Example Playbook
 
     roles:
 
-      - role: csv_report
+      - role: zilux.csv_report
         run_tasks:
           - { run: 'reachable.yml', header: 'reachable', outcome_in: ['setup_ok'] }
           - { run: 'oom_check.yml', header: 'oom_last', outcome_in: ['oom_last_outcome'] }
