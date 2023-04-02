@@ -6,11 +6,17 @@ Create csv file and mail this file
 You can create small tests and include this in your report.
 
 For an item in your report you need e.g. in site.yml one row
- - { run: 'oom_check.yml', header: 'oom_last', outcome_in: ['oom_last_outcome'] }
+```
+ - role: csv_report
+   run_tasks:
+     - { run: 'oom_check.yml', header: 'oom_last', outcome_in: ['oom_last_outcome'] }
+```
 
+```
 run:  <test in tasks>
 header: <header line of report>
 outcome_in:  < var which is filled with outcome in <test in task>
+```
 
 Requirements
 ------------
