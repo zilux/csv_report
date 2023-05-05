@@ -51,7 +51,10 @@ Example Playbook
     hosts: all
     become: true
     gather_facts: false
-
+    vars:
+      email_to: zilux@example.com
+      must_mail: true
+      
     tasks:
 
     roles:
